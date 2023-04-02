@@ -14,7 +14,9 @@ export default function Navbar({ login }) {
           <Link to="/profile">
             <li>Profile</li>
           </Link>
-          <Link to="/createPost">Create Post</Link>
+          <Link to="/createPost">CreatePost</Link>
+          <Link to="/" className="reels">Reels&Post</Link>
+
           <Link style={{ marginLeft: "20px" }} to="/followingpost">
             My Following
           </Link>
@@ -23,6 +25,7 @@ export default function Navbar({ login }) {
               Log Out
             </button>
           </Link>
+
         </>,
       ];
     } else {
