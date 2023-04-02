@@ -19,7 +19,7 @@ export default function Createpost() {
     // saving post to mongodb
     if (url) {
 
-      fetch("http://localhost:5000/createPost", {
+      fetch("/createPost", {
         method: "post",
         headers: {
           "Content-Type": "application/json",
@@ -50,9 +50,9 @@ export default function Createpost() {
     console.log(body, image)
     const data = new FormData()
     data.append("file", image)
-    data.append("upload_preset", "insta-clone")
-    data.append("cloud_name", "cantacloud2")
-    fetch("https://api.cloudinary.com/v1_1/cantacloud2/image/upload", {
+    data.append("upload_preset", "instaclone")
+    data.append("cloud_name", "cloudinstapost")
+    fetch("https://api.cloudinary.com/v1_1/cloudinstapost/image/upload", {
       method: "post",
       body: data
     }).then(res => res.json())
@@ -70,6 +70,13 @@ export default function Createpost() {
       URL.revokeObjectURL(output.src); // free memory
     };
   };
+
+//   const loadVideo = document.getElementById("videoUpload")
+//   .onchange = function(event) {
+//   let file = event.target.files[0];
+//   let blobURL = URL.createObjectURL(file);
+//   document.querySelector("video").src = blobURL;
+// }
   return (
     <div className="createPost">
       {/* //header */}
@@ -91,6 +98,11 @@ export default function Createpost() {
             setImage(event.target.files[0])
           }}
         />
+        {/* <input type='file'  id='videoUpload' onChange={(event)=>{
+            loadVideo(event)
+                  
+        }} /> */}
+
       </div>
       {/* details */}
       <div className="details">

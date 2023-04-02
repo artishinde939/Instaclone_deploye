@@ -4,8 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 
-export default function Home() {
-  var picLink = "https://cdn-icons-png.flaticon.com/128/3177/3177440.png"
+export default function MyFolliwngPost() {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [comment, setComment] = useState("");
@@ -13,17 +12,17 @@ export default function Home() {
   const [item, setItem] = useState([]);
 
   // Toast functions
-  //const notifyA = (msg) => toast.error(msg);
+  const notifyA = (msg) => toast.error(msg);
   const notifyB = (msg) => toast.success(msg);
 
   useEffect(() => {
     const token = localStorage.getItem("jwt");
     if (!token) {
-      navigate("/signup");
+      navigate("./signup");
     }
 
     // Fetching all posts
-    fetch("http://localhost:5000/allposts", {
+    fetch("/myfollwingpost", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
@@ -47,7 +46,7 @@ export default function Home() {
   };
 
   const likePost = (id) => {
-    fetch("http://localhost:5000/like", {
+    fetch("/like", {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -71,7 +70,7 @@ export default function Home() {
       });
   };
   const unlikePost = (id) => {
-    fetch("http://localhost:5000/unlike", {
+    fetch("/unlike", {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -97,7 +96,7 @@ export default function Home() {
 
   // function to make comment
   const makeComment = (text, id) => {
-    fetch("http://localhost:5000/comment", {
+    fetch("/comment", {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -134,7 +133,7 @@ export default function Home() {
             <div className="card-header">
               <div className="card-pic">
                 <img
-                  src={posts.postedBy.Photo ? posts.postedBy.Photo : picLink}
+                  src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGVyc29ufGVufDB8MnwwfHw%3D&auto=format&fit=crop&w=500&q=60"
                   alt=""
                 />
               </div>
